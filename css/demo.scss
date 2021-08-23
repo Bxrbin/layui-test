@@ -1,0 +1,93 @@
+.w_head {
+  background-color: white !important;
+  a {
+    color: black !important;
+  }
+}
+.layui-body {
+  background-color: rgb(242, 242, 242);
+  .w_box1 {
+    display: flex;
+    margin: 20px;
+    .w_box1_div {
+      //   height: 200px;
+      background-color: white;
+      flex: 1;
+      margin-right: 20px;
+      h1 {
+        height: 50px;
+        line-height: 50px;
+        padding-left: 20px;
+        border-bottom: black 1px solid;
+        position: relative;
+        ul {
+          position: absolute;
+          top: 20px;
+          right: 10px;
+          display: flex;
+          li {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+            background-color: blanchedalmond;
+          }
+          .w_box_h1_li {
+            background-color: gray;
+          }
+        }
+      }
+      .w_box1_ul {
+        margin: 10px;
+        overflow: hidden;
+        text-align: center;
+        li {
+          box-sizing: border-box;
+          float: left;
+          width: 23%;
+          height: 25%;
+          margin: 3px;
+          i {
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 30px;
+            background-color: rgb(242, 242, 242);
+          }
+        }
+      }
+      .w_box2_ul {
+        margin: 10px;
+        overflow: hidden;
+        li {
+          float: left;
+          width: 40%;
+          height: 70px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          background-color: rgb(242, 242, 242);
+          padding-left: 20px;
+          margin: 3px;
+          p:nth-of-type(1) {
+            font-size: 12px;
+          }
+          p:nth-of-type(2) {
+            font-size: 30px;
+            color: green;
+          }
+        }
+      }
+      .w_box3_tab {
+      }
+    }
+    .w_box1_div:nth-of-type(3) {
+      margin-right: 0px;
+      div{
+          width: 90%;
+          margin: auto;
+      }
+    }
+  }
+}
