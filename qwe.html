@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="./css/layui.css">
   <link rel="stylesheet" href="./css/demo.css">
   <script src="./js/layui.js"></script>
+  <script src="./js/echarts.min.js"></script>
+  <script src="./js/jquery-3.6.0.min.js"></script>
+  <script src="./js/demo.js"></script>
 
 </head>
 
@@ -23,7 +26,8 @@
           <i class="layui-icon layui-icon-spread-left"></i>
         </li>
 
-        <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon layui-icon-spread-left"></i></a></li>
+        <li class="layui-nav-item layui-hide-xs" id="w_left"><a href=""><i
+              class="layui-icon layui-icon-spread-left"></i></a></li>
         <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon layui-icon-website"></i></a></li>
         <li class="layui-nav-item layui-hide-xs"><a href=""><i class="layui-icon layui-icon-refresh-3"></i></a></li>
         <li class="layui-nav-item">
@@ -88,10 +92,10 @@
               <i class="layui-icon layui-icon-home"></i>
               主页</a>
             <dl class="layui-nav-child">
-              <dd><a href="javascript:;">menu 1</a></dd>
-              <dd><a href="javascript:;">menu 2</a></dd>
-              <dd><a href="javascript:;">menu 3</a></dd>
-              <dd><a href="">the links</a></dd>
+              <dd><a href="javascript:;">控制台</a></dd>
+              <dd><a href="javascript:;">主页一</a></dd>
+              <dd><a href="javascript:;">主页二</a></dd>
+              <!-- <dd><a href="">the links</a></dd> -->
             </dl>
           </li>
           <li class="layui-nav-item">
@@ -166,7 +170,7 @@
       <div class="w_box1">
         <div class="w_box1_div">
           <h1>快捷方式
-            <ul>
+            <ul class="w_ul_move">
               <li class="w_box_h1_li"></li>
               <li></li>
             </ul>
@@ -200,7 +204,7 @@
         </div>
         <div class="w_box1_div">
           <h1>待办事项
-            <ul>
+            <ul class="w_ul_move">
               <li class="w_box_h1_li"></li>
               <li></li>
             </ul>
@@ -227,8 +231,8 @@
         <div class="w_box1_div">
           <h1>版本信息
             <ul>
-              <li class="w_box_h1_li"></li>
-              <li></li>
+              <li class="w_li_move w_box_h1_li"></li>
+              <li class="w_li_move"></li>
             </ul>
           </h1>
           <div>
@@ -236,7 +240,7 @@
               <colgroup>
                 <col width="100">
                 <col width="200">
-                <col>
+                <col width="100">
               </colgroup>
               <tbody>
                 <tr>
@@ -260,17 +264,292 @@
           </div>
         </div>
       </div>
-      <div class="layui-card">
-        <div class="layui-card-header">卡片面板</div>
-        <div class="layui-card-body">
-          卡片式面板面板通常用于非白色背景色的主体内<br>
-          从而映衬出边框投影
+
+      <div class="w_box1">
+        <div class="layui-card w_box2_div">
+          <div class="layui-card-header">数据预览</div>
+          <div class="layui-card-body" id="main">
+          </div>
+        </div>
+        <div class="w_box2_cum">
+          <div class="layui-card">
+            <div class="layui-card-header">效果报告</div>
+            <div class="layui-card-body">
+              <div class="w_p_h1">
+                <p>65%</p>
+                <h1>转化率（日同比28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span> ）</h1>
+              </div>
+              <div class="layui-progress">
+                <div class="layui-progress-bar" lay-percent="65%"></div>
+              </div>
+              <div class="w_p_h1">
+                <p>32%</p>
+                <h1>签到率（日同比11% <span class="layui-edge layui-edge-bottom" lay-tips="下降" lay-offset="-15"></span> ）</h1>
+              </div>
+              <div class="layui-progress">
+                <div class="layui-progress-bar" lay-percent="32%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="layui-card">
+            <div class="layui-card-header">进度占用</div>
+            <div class="layui-card-body">
+
+              <div class="w_p_h1">
+                <p>58%</p>
+                <h1>CPU使用率</h1>
+              </div>
+              <div class="layui-progress">
+                <div class="layui-progress-bar" lay-percent="58%"></div>
+              </div>
+              <div class="w_p_h1">
+                <p>90%</p>
+                <h1>内存占用率吧</h1>
+              </div>
+              <div class="layui-progress">
+                <div class="layui-progress-bar layui-bg-red" lay-percent="90%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w_box1 w_box3">
+        <div class="layui-card">
+          <div class="layui-card-header">访客地区分布</div>
+          <div class="layui-card-body" id="w_main2">
+            <table class="layui-table_" lay-skin="line" style="text-align: center;">
+              <colgroup>
+                <col width="100">
+                <col width="160">
+                <col>
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>排名</th>
+                  <th>地区</th>
+                  <th>人数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>浙江</td>
+                  <td>62310</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>上海</td>
+                  <td>59190</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>广东</td>
+                  <td>55891</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>北京</td>
+                  <td>51919</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>山东</td>
+                  <td>39231</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>湖北</td>
+                  <td>37109</td>
+                </tr>
+              </tbody>
+            </table>
+            <iframe src="./dome.html" frameborder="0"></iframe>
+          </div>
+        </div>
+
+
+        <div class="layui-card">
+          <div class="layui-card-header">项目进展</div>
+          <div class="layui-card-body" style="padding: 22px 15px;">
+            <table id="LAY-home-homepage-console"></table>
+            <div class="layui-form layui-border-box layui-table-view layui-table-view-3"
+              lay-filter="LAY-TABLE-FORM-DF-3" lay-id="LAY-home-homepage-console" style=" ">
+              <div class="layui-table-box">
+                <div class="layui-table-header">
+                  <table cellspacing="0" cellpadding="0" border="0" class="w_layui-table" lay-skin="line">
+                    <thead>
+                      <tr>
+                        <th data-field="0" data-key="3-0-0" data-unresize="true" class=" layui-table-col-special" id="w_input_all">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary" lay-filter="layTableAllChoose"
+                               >
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </th>
+                        <th data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1"><span>任务</span></div>
+                        </th>
+                        <th data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2"><span>所需时间</span></div>
+                        </th>
+                        <th data-field="complete" data-key="3-0-3" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span>完成情况</span></div>
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="layui-table-body layui-table-main">
+                  <table cellspacing="0" cellpadding="0" border="0" class="w_layui-table" lay-skin="line">
+                    <tbody>
+                      <tr data-index="0" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="" class="w_inp">
+                            <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">开会</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">一小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="已完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><del style="color: #5FB878;">已完成</del></div>
+                        </td>
+                      </tr>
+                      <tr data-index="1" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary" checked="">
+                            <div class="layui-unselect layui-form-checkbox layui-form-checked" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">项目开发</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">两小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="进行中" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FFB800;">进行中</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-index="2" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">陪吃饭</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">一小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="未完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FF5722;">未完成</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-index="3" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">修改小bug</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">半小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="未完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FF5722;">未完成</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-index="4" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">修改大bug</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">两小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="未完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FF5722;">未完成</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-index="5" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">修改小bug</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">半小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="未完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FF5722;">未完成</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr data-index="6" class="">
+                        <td data-field="0" data-key="3-0-0" class="layui-table-col-special">
+                          <div class="layui-table-cell laytable-cell-3-0-0 laytable-cell-checkbox"><input
+                              type="checkbox" name="layTableCheckbox" lay-skin="primary">
+                            <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><i
+                                class="layui-icon layui-icon-ok"></i></div>
+                          </div>
+                        </td>
+                        <td data-field="prograss" data-key="3-0-1" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-1">修改大bug</div>
+                        </td>
+                        <td data-field="time" data-key="3-0-2" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-2">两小时</div>
+                        </td>
+                        <td data-field="complete" data-key="3-0-3" data-content="未完成" class="">
+                          <div class="layui-table-cell laytable-cell-3-0-3"><span style="color: #FF5722;">未完成</span>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+
+
+
       <div class="layui-footer">
         <!-- 底部固定区域 -->
-        底部固定区域
+
       </div>
     </div>
     <script>
@@ -286,7 +565,7 @@
           //左侧菜单事件
           menuLeft: function (othis) {
             layer.msg('展开左侧菜单的操作', {
-              icon: 0
+              icon: 1
             });
           },
           menuRight: function () {
@@ -301,8 +580,10 @@
             });
           }
         });
-
       });
+
+
+      
     </script>
 </body>
 
